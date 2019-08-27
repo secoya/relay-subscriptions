@@ -1,5 +1,5 @@
 {
-	"name": "relay-subscriptions",
+	"name": "@secoya/relay-subscriptions",
 	"version": "2.0.2",
 	"description": "Subscription support for Relay",
 	"main": "lib/index.js",
@@ -15,7 +15,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/edvinerikson/relay-subscriptions.git"
+		"url": "git+https://github.com/secoya/relay-subscriptions.git"
 	},
 	"files": [
 		"lib"
@@ -28,9 +28,9 @@
 	"author": "Edvin Eriksson <edvinerikson@gmail.com>",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/edvinerikson/relay-subscriptions/issues"
+		"url": "https://github.com/secoya/relay-subscriptions/issues"
 	},
-	"homepage": "https://github.com/edvinerikson/relay-subscriptions#readme",
+	"homepage": "https://github.com/secoya/relay-subscriptions#readme",
 	"dependencies": {
 		"invariant": "^2.2.2",
 		"lodash": "^4.17.4",
