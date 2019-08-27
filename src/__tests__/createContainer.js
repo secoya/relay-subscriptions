@@ -35,14 +35,12 @@ describe('createContainer', () => {
     const WidgetContainer = RelaySubscriptions.createContainer(Widget, {});
     expect(WidgetContainer.isRelayContainer).toBe(true);
 
-    mount(<WidgetContainer relay={{}} />, {
-      context: {
-        relay: {
-          environment,
-          variables: {},
-        },
-      },
-    });
+    const relayProp = {
+      environment,
+      variables: {},
+    };
+
+    mount(<WidgetContainer relay={relayProp} />);
     expect(environment.startSubscription).toHaveBeenCalledWith(dummySubscription);
   });
 });

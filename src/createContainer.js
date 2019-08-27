@@ -9,7 +9,7 @@ import type { RelayContainerSpec } from 'react-relay/lib/RelayContainer';
 import type Subscription from './Subscription';
 import type { SubscriptionDisposable } from './types';
 
-type subscriptionFn = (props: Object) => ?Subscription<any>;
+type subscriptionFn = (props: Object) =>?Subscription<any>;
 
 type ActiveSubscription = {
   subscription: Subscription<any>,
@@ -37,15 +37,11 @@ function subscribe(
       relay: PropTypes.object.isRequired,
     };
 
-    static contextTypes = {
-      relay: Relay.PropTypes.ClassicRelay,
-    };
-
     relayProp: mixed;
     activeSubscriptions: Array<?ActiveSubscription>;
 
-    constructor(props, context) {
-      super(props, context);
+    constructor(props) {
+      super(props);
 
       this.relayProp = this.makeRelayProp(props);
       this.activeSubscriptions = [];
@@ -92,7 +88,7 @@ function subscribe(
     makeRelayProp(props) {
       return {
         ...props.relay,
-        subscribe: this.context.relay.environment.startSubscription,
+        subscribe: props.relay.environment.startSubscription,
       };
     }
 
@@ -103,7 +99,7 @@ function subscribe(
 
       return {
         subscription,
-        disposable: this.context.relay.environment.startSubscription(subscription),
+        disposable: this.props.relay.environment.startSubscription(subscription),
       };
     }
 
@@ -126,7 +122,7 @@ function subscribe(
       }
 
       // Need to bind subscription to Relay environment to get variables.
-      nextSubscription.bindEnvironment(this.context.relay.environment);
+      nextSubscription.bindEnvironment(this.props.relay.environment);
 
       // Check if variables match.
       return isEqual(
